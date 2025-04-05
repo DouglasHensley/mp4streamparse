@@ -9,7 +9,7 @@ import (
 func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logger) (func() error, chan TopBox) {
 	fn := "ParseFile"
 
-	chBoxTree := make(chan TopBox)
+	chBoxTree := make(chan TopBox, 1)
 
 	outFn := func() (rcErr error) {
 		logger.Printf("%s: Begin", fn)
@@ -71,6 +71,7 @@ func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logge
 				} // END: BoxLoop
 			} // END: Select
 		} // END: TopLoop
+		logger.Printf("%s: Send BoxTree on buffered channel", fn)
 		chBoxTree <- BoxTree
 		logger.Printf("%s: Total Bytes Processed(%d)", fn, workBuffCnt)
 		return
