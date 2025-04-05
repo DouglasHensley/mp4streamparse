@@ -45,6 +45,7 @@ func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logge
 					}
 					if int64(len(workBuff)) < BoxHeaderSize {
 						if !chInOpen {
+							logger.Printf("%s: chInbytes Closed", fn)
 							rcErr = nil
 							break TopLoop
 						}
