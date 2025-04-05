@@ -34,11 +34,11 @@ func NewStsdBox(name string, size uint32, buf []byte) *StsdBox {
 
 func (b StsdBox) String() string {
 	indentLevel := 6
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< StsdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tEntryCount(%d)", strMsg, tab, b.entryCount)
-	strMsg = fmt.Sprintf("%s\n%s\tSampleEntry(%v)", strMsg, tab, b.sampleEntry)
-	strMsg = fmt.Sprintf("%s\n%s\tSampleDeltas(%v)", strMsg, tab, b.avc1)
+	strMsg = fmt.Sprintf("%s\tEntryCount(%d)", strMsg, b.entryCount)
+	strMsg = fmt.Sprintf("%s\tSampleEntry(%v)", strMsg, b.sampleEntry)
+	strMsg = fmt.Sprintf("%s\tSampleDeltas(%v)", strMsg, b.avc1)
 	return strMsg
 }
 

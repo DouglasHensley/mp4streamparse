@@ -18,10 +18,11 @@ func NewTrakBox(name string, size uint32, buf []byte) *TrakBox {
 
 func (b TrakBox) String() string {
 	indentLevel := 2
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< TrakBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.tkhd)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.mdia)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.tkhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mdia)
 	return strMsg
 }
 

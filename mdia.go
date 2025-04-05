@@ -19,11 +19,12 @@ func NewMdiaBox(name string, size uint32, buf []byte) *MdiaBox {
 
 func (b MdiaBox) String() string {
 	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< MdiaBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.hdlr)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.mdhd)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.minf)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.hdlr)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mdhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.minf)
 	return strMsg
 }
 

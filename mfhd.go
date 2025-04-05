@@ -19,9 +19,9 @@ func NewMfhdBox(name string, size uint32, buf []byte) *MfhdBox {
 
 func (b MfhdBox) String() string {
 	indentLevel := 2
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< MfhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tSequenceNumber(%d)", strMsg, tab, b.sequenceNumber)
+	strMsg = fmt.Sprintf("%s\tSequenceNumber(%d)", strMsg, b.sequenceNumber)
 	return strMsg
 }
 

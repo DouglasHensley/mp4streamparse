@@ -70,8 +70,9 @@ func FindNextBox(buffer []byte) (int, uint32, bool) {
 }
 
 // ReadBoxes Search buffer for top level boxes; recurse for sub-boxes
-func ReadBoxes(buffer []byte, mp4BoxTree *TopBox) uint32 {
+func ReadBoxes(buffer []byte, mp4BoxTree []string) uint32 {
 	var offset uint32
+	// var prevSeqNo uint32
 	for offset = 0; offset < (uint32)(len(buffer)); {
 		buf := buffer[offset:]
 		size, name := ParseHeader(buf)
@@ -83,32 +84,36 @@ func ReadBoxes(buffer []byte, mp4BoxTree *TopBox) uint32 {
 		switch string(name) {
 		// Initialization Boxes
 		case "ftyp":
-			mp4BoxTree.ftyp = NewFtypBox(string(name), size, buf[:size])
-			mp4BoxTree.ftyp.Parse()
+			mp4box := NewFtypBox(string(name), size, buf[:size])
+			mp4box.Parse()
+			mp4BoxTree = append(mp4BoxTree, mp4box.String())
 		case "styp":
-			mp4BoxTree.styp = NewStypBox(string(name), size, buf[:size])
-			mp4BoxTree.styp.Parse()
+			mp4box := NewStypBox(string(name), size, buf[:size])
+			mp4box.Parse()
+			mp4BoxTree = append(mp4BoxTree, mp4box.String())
 		case "moov":
-			mp4BoxTree.moov = NewMoovBox(string(name), size, buf[:size])
-			mp4BoxTree.moov.Parse()
+			mp4box := NewMoovBox(string(name), size, buf[:size])
+			mp4box.Parse()
+			mp4BoxTree = append(mp4BoxTree, mp4box.String())
 
 		// Data Boxes
 		case "moof":
-			newMoofBox := NewMoofBox(string(name), size, buf[:size])
-			if mp4BoxTree.moof != nil {
-				newMoofBox.prevSeqNo = mp4BoxTree.moof.mfhd.sequenceNumber
-			} else {
-				newMoofBox.prevSeqNo = 0
-			}
-			mp4BoxTree.moof = newMoofBox
-			mp4BoxTree.moof.Parse()
+			mp4box := NewMoofBox(string(name), size, buf[:size])
+			// if mp4box != nil {
+			// 	prevSeqNo = mp4box.mfhd.sequenceNumber
+			// } else {
+			// 	prevSeqNo = 0
+			// }
+			mp4box.Parse()
+			mp4BoxTree = append(mp4BoxTree, mp4box.String())
 		case "mdat":
 			boxSize := size
 			if boxSize == 0 {
 				boxSize = uint32(len(buf))
 			}
-			mp4BoxTree.mdat = NewMdatBox(string(name), boxSize, buf[:boxSize])
-			mp4BoxTree.mdat.Parse()
+			mp4box := NewMdatBox(string(name), boxSize, buf[:boxSize])
+			mp4box.Parse()
+			mp4BoxTree = append(mp4BoxTree, mp4box.String())
 		}
 		offset += size
 	}

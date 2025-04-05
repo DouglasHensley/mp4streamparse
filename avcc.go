@@ -47,10 +47,10 @@ func NewAvcCBox(name string, size uint32, buf []byte) *AvcCBox {
 
 func (b AvcCBox) String() string {
 	indentLevel := 8
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< AvcCBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tH264: Profile(%v) CompatibleProfiles(%v) Level(%v)",
-		strMsg, tab, b.h264Profile, b.h264CompatibleProfiles, b.h264Level)
+	strMsg = fmt.Sprintf("%s\tH264: Profile(%v) CompatibleProfiles(%v) Level(%v)",
+		strMsg, b.h264Profile, b.h264CompatibleProfiles, b.h264Level)
 	return strMsg
 }
 

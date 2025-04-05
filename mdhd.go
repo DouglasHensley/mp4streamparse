@@ -24,10 +24,10 @@ func NewMdhdBox(name string, size uint32, buf []byte) *MdhdBox {
 
 func (b MdhdBox) String() string {
 	indentLevel := 4
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< MdhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tCreationTime(%d) ModificationTime(%d)", strMsg, tab, b.creationTime, b.modificationTime)
-	strMsg = fmt.Sprintf("%s\n%s\tTimescale(%d) Duration(%d) Language(%d, %s)", strMsg, tab, b.timescale, b.duration, b.language, b.languageString)
+	strMsg = fmt.Sprintf("%s\tCreationTime(%d) ModificationTime(%d)", strMsg, b.creationTime, b.modificationTime)
+	strMsg = fmt.Sprintf("%s\tTimescale(%d) Duration(%d) Language(%d, %s)", strMsg, b.timescale, b.duration, b.language, b.languageString)
 	return strMsg
 }
 

@@ -6,20 +6,20 @@ import (
 )
 
 // ParseFile toplevel mp4 atom parse
-func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logger) (func() error, chan TopBox) {
+func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logger) (func() error, chan []string) {
 	fn := "ParseFile"
 
-	chBoxTree := make(chan TopBox, 1)
+	chBoxReport := make(chan []string, 1)
 
 	outFn := func() (rcErr error) {
 		logger.Printf("%s: Begin", fn)
 		defer logger.Printf("%s: End", fn)
 
 		defer func() {
-			close(chBoxTree)
+			close(chBoxReport)
 		}()
 
-		BoxTree := TopBox{}
+		BoxReport := make([]string, 0)
 		var workBuff []byte
 		var workBuffCnt uint64 = 0
 	TopLoop:
@@ -58,19 +58,19 @@ func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logge
 				}
 				logger.Printf("%s: boxType(%s) boxSize(%d) workBuff(%d)", fn, boxType, boxSize, len(workBuff))
 
-				n := ReadBoxes(workBuff[:boxSize], &BoxTree)
+				n := ReadBoxes(workBuff[:boxSize], BoxReport)
 				if n != boxSize {
 					logger.Printf("%s: BuffSize(%d) != ReadBoxes(%d)", fn, n, boxSize)
 				}
 				workBuff = workBuff[boxSize:] // Shift boxSize bytes out of working buffer
 			} // END: BoxLoop
 		} // END: TopLoop
-		logger.Printf("%s: Send BoxTree on buffered channel", fn)
-		// chBoxTree <- BoxTree
+		logger.Printf("%s: Send BoxReport on buffered channel", fn)
+		chBoxReport <- BoxReport
 		logger.Printf("%s: Total Bytes Processed(%d)", fn, workBuffCnt)
 		return
 	}
-	return outFn, chBoxTree
+	return outFn, chBoxReport
 }
 
 /*

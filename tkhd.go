@@ -28,12 +28,12 @@ func NewTkhdBox(name string, size uint32, buf []byte) *TkhdBox {
 
 func (b TkhdBox) String() string {
 	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< TkhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tCreationTime(%d) ModificationTime(%d) TrackID(%d) Duration(%d)",
-		strMsg, tab, b.creationTime, b.modificationTime, b.trackID, b.duration)
-	strMsg = fmt.Sprintf("%s\n%s\tLayer(%d) AlternateGroup(%d) Width(%d) Height(%d)",
-		strMsg, tab, b.layer, b.alternateGroup, b.width, b.height)
+	strMsg = fmt.Sprintf("%s\tCreationTime(%d) ModificationTime(%d) TrackID(%d) Duration(%d)",
+		strMsg, b.creationTime, b.modificationTime, b.trackID, b.duration)
+	strMsg = fmt.Sprintf("%s\tLayer(%d) AlternateGroup(%d) Width(%d) Height(%d)",
+		strMsg, b.layer, b.alternateGroup, b.width, b.height)
 	return strMsg
 }
 

@@ -19,11 +19,12 @@ func NewTrafBox(name string, size uint32, buf []byte) *TrafBox {
 
 func (b TrafBox) String() string {
 	indentLevel := 2
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< TrafBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.tfhd)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.tfdt)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.trun)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.tfhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.tfdt)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.trun)
 	return strMsg
 }
 

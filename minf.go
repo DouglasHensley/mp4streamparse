@@ -19,11 +19,12 @@ func NewMinfBox(name string, size uint32, buf []byte) *MinfBox {
 
 func (b MinfBox) String() string {
 	indentLevel := 4
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< MinfBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.vmhd)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.stbl)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.hmhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.vmhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.stbl)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.hmhd)
 	return strMsg
 }
 

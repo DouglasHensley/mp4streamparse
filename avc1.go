@@ -54,13 +54,14 @@ func NewAvc1Box(name string, size uint32, buf []byte) *Avc1Box {
 
 func (b Avc1Box) String() string {
 	indentLevel := 7
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< Avc1Box >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tDataRefIndex(%d)", strMsg, tab, b.dataRefIndex)
-	strMsg = fmt.Sprintf("%s\n%s\tWidth(%d) Height(%d) H-Resolution(%f) V-Resolution(%f)",
-		strMsg, tab, b.width, b.height, b.hResolution, b.vResolution)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.avcC)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.pasp)
+	strMsg = fmt.Sprintf("%s\tDataRefIndex(%d)", strMsg, b.dataRefIndex)
+	strMsg = fmt.Sprintf("%s  Width(%d) Height(%d) H-Resolution(%f) V-Resolution(%f)",
+		strMsg, b.width, b.height, b.hResolution, b.vResolution)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.avcC)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.pasp)
 	return strMsg
 }
 

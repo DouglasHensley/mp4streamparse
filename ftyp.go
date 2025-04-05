@@ -19,9 +19,9 @@ func NewFtypBox(name string, size uint32, buf []byte) *FtypBox {
 
 func (b FtypBox) String() string {
 	indentLevel := 1
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< FtypBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tMajorBrand(%s) MinorVersion(%d) CompatibleBrands(%v)", strMsg, tab, b.majorBrand, b.minorVersion, b.compatibleBrands)
+	strMsg = fmt.Sprintf("%s\tMajorBrand(%s) MinorVersion(%d) CompatibleBrands(%v)", strMsg, b.majorBrand, b.minorVersion, b.compatibleBrands)
 	return strMsg
 }
 

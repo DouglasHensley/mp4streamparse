@@ -18,10 +18,11 @@ func NewStblBox(name string, size uint32, buf []byte) *StblBox {
 
 func (b StblBox) String() string {
 	indentLevel := 5
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< StblBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.stts)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.stsd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.stts)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.stsd)
 	return strMsg
 }
 

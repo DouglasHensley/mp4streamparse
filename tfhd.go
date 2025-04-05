@@ -83,10 +83,10 @@ func NewTfhdBox(name string, size uint32, buf []byte) *TfhdBox {
 
 func (b TfhdBox) String() string {
 	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< TfhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tTrackID(%d) BaseDataOffset(%d) SampleDescriptionIndex(%d) Default Sample: Duration(%d) Size(%d) Flags(%d)",
-		strMsg, tab, b.trackID, b.baseDataOffset, b.sampleDescriptionIndex, b.defaultSampleDuration, b.defaultSampleSize, b.defaultSampleFlags)
+	strMsg = fmt.Sprintf("%s\tTrackID(%d) BaseDataOffset(%d) SampleDescriptionIndex(%d) Default Sample: Duration(%d) Size(%d) Flags(%d)",
+		strMsg, b.trackID, b.baseDataOffset, b.sampleDescriptionIndex, b.defaultSampleDuration, b.defaultSampleSize, b.defaultSampleFlags)
 	return strMsg
 }
 

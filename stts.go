@@ -21,11 +21,11 @@ func NewSttsBox(name string, size uint32, buf []byte) *SttsBox {
 
 func (b SttsBox) String() string {
 	indentLevel := 6
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< SttsBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tEntryCount(%d)", strMsg, tab, b.entryCount)
-	strMsg = fmt.Sprintf("%s\n%s\tSampleCounts(%v)", strMsg, tab, b.sampleCounts)
-	strMsg = fmt.Sprintf("%s\n%s\tSampleDeltas(%v)", strMsg, tab, b.sampleDeltas)
+	strMsg = fmt.Sprintf("%s\tEntryCount(%d)", strMsg, b.entryCount)
+	strMsg = fmt.Sprintf("%s\tSampleCounts(%v)", strMsg, b.sampleCounts)
+	strMsg = fmt.Sprintf("%s\tSampleDeltas(%v)", strMsg, b.sampleDeltas)
 	return strMsg
 }
 

@@ -20,9 +20,9 @@ func NewHdlrBox(name string, size uint32, buf []byte) *HdlrBox {
 
 func (b HdlrBox) String() string {
 	indentLevel := 4
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< HdlrBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tHandler(%s) Name(%s)", strMsg, tab, b.handler, b.name)
+	strMsg = fmt.Sprintf("%s\tHandler(%s) Name(%s)", strMsg, b.handler, b.name)
 	return strMsg
 }
 

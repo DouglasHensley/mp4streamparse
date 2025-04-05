@@ -40,10 +40,8 @@ type TrunSample struct {
 }
 
 func (b TrunSample) String() string {
-	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
-	strMsg := fmt.Sprintf("%s<< TrunSample >> Duration(%d) Size(%d) Flags(%d) CompositionTimeOffset(%d)",
-		tab, b.sampleDuration, b.sampleSize, b.sampleFlags, b.sampleCompositionTimeOffset)
+	strMsg := fmt.Sprintf("<< TrunSample >> Duration(%d) Size(%d) Flags(%d) CompositionTimeOffset(%d)",
+		b.sampleDuration, b.sampleSize, b.sampleFlags, b.sampleCompositionTimeOffset)
 	return strMsg
 }
 
@@ -114,10 +112,10 @@ func NewTrunBox(name string, size uint32, buf []byte) *TrunBox {
 
 func (b TrunBox) String() string {
 	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< TrunBox >>", tab)
-	strMsg = fmt.Sprint("%s\n%s\tSampleCount(%d) DataOffset(%d)", strMsg, tab, b.sampleCount, b.dataOffset)
-	strMsg = fmt.Sprintf("%s\n%s\tSampleArray(%v)", strMsg, tab, b.sampleArray)
+	strMsg = fmt.Sprintf("%s\tSampleCount(%d) DataOffset(%d)", strMsg, b.sampleCount, b.dataOffset)
+	strMsg = fmt.Sprintf("%s\tSampleArray(%v)", strMsg, b.sampleArray)
 	return strMsg
 }
 

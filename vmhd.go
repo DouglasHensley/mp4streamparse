@@ -20,9 +20,9 @@ func NewVmhdBox(name string, size uint32, buf []byte) *VmhdBox {
 
 func (b VmhdBox) String() string {
 	indentLevel := 5
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< VmhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tGraphicsMode(%d) OpColor(%d)", strMsg, tab, b.graphicsMode, b.opColor)
+	strMsg = fmt.Sprintf("%s\tGraphicsMode(%d) OpColor(%d)", strMsg, b.graphicsMode, b.opColor)
 	return strMsg
 }
 

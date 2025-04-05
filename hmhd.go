@@ -21,10 +21,10 @@ func NewHmhdBox(name string, size uint32, buf []byte) *HmhdBox {
 
 func (b HmhdBox) String() string {
 	indentLevel := 5
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< HmhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tPDU Size: Max(%d) Avg(%d);", strMsg, tab, b.maxPDUSize, b.avgPDUSize)
-	strMsg = fmt.Sprintf("%s\n%s\tBitRate: Max(%d) Avg(%d);", strMsg, tab, b.maxBitrate, b.avgBitrate)
+	strMsg = fmt.Sprintf("%s\tPDU Size: Max(%d) Avg(%d);", strMsg, b.maxPDUSize, b.avgPDUSize)
+	strMsg = fmt.Sprintf("%s\tBitRate: Max(%d) Avg(%d);", strMsg, b.maxBitrate, b.avgBitrate)
 	return strMsg
 }
 

@@ -50,9 +50,9 @@ func NewPaspBox(name string, size uint32, buf []byte) *PaspBox {
 
 func (b PaspBox) String() string {
 	indentLevel := 8
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< PaspBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tNot Parsed", strMsg, tab)
+	strMsg = fmt.Sprintf("%s\tNot Parsed", strMsg)
 	return strMsg
 }
 

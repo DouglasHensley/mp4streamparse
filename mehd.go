@@ -17,9 +17,9 @@ func NewMehdBox(name string, size uint32, buf []byte) *MehdBox {
 
 func (b MehdBox) String() string {
 	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< MehdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tFragmentDuration(%d)", strMsg, tab, b.fragmentDuration)
+	strMsg = fmt.Sprintf("%s\tFragmentDuration(%d)", strMsg, b.fragmentDuration)
 	return strMsg
 }
 

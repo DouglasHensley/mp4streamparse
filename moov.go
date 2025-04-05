@@ -26,11 +26,12 @@ func NewMoovBox(name string, size uint32, buf []byte) *MoovBox {
 
 func (b MoovBox) String() string {
 	indentLevel := 1
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< MoovBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.mvex)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.mvhd)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.trak)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mvex)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mvhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.trak)
 	return strMsg
 }
 

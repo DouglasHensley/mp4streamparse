@@ -36,9 +36,9 @@ func NewMvhdBox(name string, size uint32, buf []byte) *MvhdBox {
 
 func (b MvhdBox) String() string {
 	indentLevel := 2
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< MvhdBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tTimescale(%d) Duration(%d)", strMsg, tab, b.timescale, b.duration)
+	strMsg = fmt.Sprintf("%s\tTimescale(%d) Duration(%d)", strMsg, b.timescale, b.duration)
 	return strMsg
 }
 

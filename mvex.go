@@ -17,9 +17,9 @@ func NewMvexBox(name string, size uint32, buf []byte) *MvexBox {
 
 func (b MvexBox) String() string {
 	indentLevel := 2
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< MvexBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.mehd)
+	strMsg = fmt.Sprintf("%s\t%s", strMsg, b.mehd)
 	return strMsg
 }
 

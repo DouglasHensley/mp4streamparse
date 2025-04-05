@@ -17,9 +17,9 @@ func NewTfdtBox(name string, size uint32, buf []byte) *TfdtBox {
 
 func (b TfdtBox) String() string {
 	indentLevel := 3
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
 	strMsg := fmt.Sprintf("%s<< TfdtBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tBaseMediaDecodeTime(%d)", strMsg, tab, b.baseMediaDecodeTime)
+	strMsg = fmt.Sprintf("%s\tBaseMediaDecodeTime(%d)", strMsg, b.baseMediaDecodeTime)
 	return strMsg
 }
 

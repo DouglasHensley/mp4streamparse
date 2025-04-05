@@ -20,11 +20,12 @@ func NewMoofBox(name string, size uint32, buf []byte) *MoofBox {
 
 func (b MoofBox) String() string {
 	indentLevel := 1
-	tab := strings.Repeat("\t", indentLevel)
+	tab := strings.Repeat("    ", indentLevel)
+	tab1 := strings.Repeat("    ", indentLevel+1)
 	strMsg := fmt.Sprintf("%s<< MoofBox >>", tab)
-	strMsg = fmt.Sprintf("%s\n%s\tPrevSeqNo(%d) ElapsedTime(%f)", strMsg, tab, b.prevSeqNo, b.elapsedTime)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.mfhd)
-	strMsg = fmt.Sprintf("%s\n%s\t%s", strMsg, tab, b.traf)
+	strMsg = fmt.Sprintf("%s\tPrevSeqNo(%d) ElapsedTime(%f)", strMsg, b.prevSeqNo, b.elapsedTime)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mfhd)
+	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.traf)
 	return strMsg
 }
 
