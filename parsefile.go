@@ -72,7 +72,7 @@ func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logge
 			} // END: Select
 		} // END: TopLoop
 		logger.Printf("%s: Send BoxTree on buffered channel", fn)
-		chBoxTree <- BoxTree
+		// chBoxTree <- BoxTree
 		logger.Printf("%s: Total Bytes Processed(%d)", fn, workBuffCnt)
 		return
 	}
