@@ -2,6 +2,7 @@ package mp4streamparse
 
 import (
 	"bytes"
+	"fmt"
 	"time"
 )
 
@@ -34,6 +35,12 @@ var (
 type TimestampBox struct {
 	TimestampUnixNano int64
 	Mp4Box            interface{}
+}
+
+func (tsBox *TimestampBox) String() string {
+	strMsg := fmt.Sprintf("\n## TimestampBox ##")
+	strMsg = fmt.Sprintf("%s%s", strMsg, tsBox.Mp4Box)
+	return strMsg
 }
 
 // ParseHeader (size, type) from an offset.
