@@ -23,6 +23,11 @@ When a client playback request or slider bar drag/drop random access request is 
 go get -u github.com/DouglasHensley/mp4streamparse
 ```
 
+The ````examples```` directory contains an example generating a report showing the elements of an MP4 file (````mp4fileparse.go````)
+and an example of parsing the elements of an MP4 stream (````mp4streamparse.go````).  
+
+
+
 ----
 ### Credit
 ----
