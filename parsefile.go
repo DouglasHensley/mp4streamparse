@@ -6,10 +6,10 @@ import (
 )
 
 // ParseFile toplevel mp4 atom parse
-func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logger) (func() error, chan []string) {
+func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logger) (func() error, chan *[]string) {
 	fn := "ParseFile"
 
-	chBoxReport := make(chan []string, 1)
+	chBoxReport := make(chan *[]string, 1)
 
 	outFn := func() (rcErr error) {
 		logger.Printf("%s: Begin", fn)
@@ -66,7 +66,7 @@ func ParseFile(ctx context.Context, chInbytes chan []byte, logger *std_log.Logge
 			} // END: BoxLoop
 		} // END: TopLoop
 		logger.Printf("%s: Send BoxReport on buffered channel", fn)
-		chBoxReport <- BoxReport
+		chBoxReport <- &BoxReport
 		logger.Printf("%s: Total Bytes Processed(%d)", fn, workBuffCnt)
 		return
 	}
