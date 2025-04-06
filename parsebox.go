@@ -70,14 +70,14 @@ func FindNextBox(buffer []byte) (int, uint32, bool) {
 }
 
 // ReadBoxes Search buffer for top level boxes; recurse for sub-boxes
-func ReadBoxes(buffer []byte, mp4BoxTree []string) uint32 {
+func ReadBoxes(buffer []byte, mp4BoxTree []string) (uint32, []string) {
 	var offset uint32
 	// var prevSeqNo uint32
 	for offset = 0; offset < (uint32)(len(buffer)); {
 		buf := buffer[offset:]
 		size, name := ParseHeader(buf)
 		if size == 0 {
-			return offset
+			return offset, mp4BoxTree
 		}
 
 		// Recurse for sub-boxes
@@ -117,7 +117,7 @@ func ReadBoxes(buffer []byte, mp4BoxTree []string) uint32 {
 		}
 		offset += size
 	}
-	return offset
+	return offset, mp4BoxTree
 }
 
 // ReadBox Search buffer for a top level box; recurse for sub-boxes
