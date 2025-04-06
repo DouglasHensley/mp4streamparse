@@ -28,7 +28,7 @@ func (b MoovBox) String() string {
 	indentLevel := 1
 	tab := strings.Repeat("    ", indentLevel)
 	tab1 := strings.Repeat("    ", indentLevel+1)
-	strMsg := fmt.Sprintf("%s<< MoovBox >>", tab)
+	strMsg := fmt.Sprintf("\n%s<< MoovBox >>", tab)
 	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mvex)
 	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mvhd)
 	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.trak)

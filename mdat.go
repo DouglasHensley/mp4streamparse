@@ -17,7 +17,7 @@ func NewMdatBox(name string, size uint32, buf []byte) *MdatBox {
 func (b MdatBox) String() string {
 	indentLevel := 1
 	tab := strings.Repeat("    ", indentLevel)
-	strMsg := fmt.Sprintf("%s<< MdatBox >>", tab)
+	strMsg := fmt.Sprintf("\n%s<< MdatBox >>", tab)
 	strMsg = fmt.Sprintf("%s\tData Length(%d)", strMsg, len(b.buffer))
 	return strMsg
 }

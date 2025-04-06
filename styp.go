@@ -20,7 +20,7 @@ func NewStypBox(name string, size uint32, buf []byte) *StypBox {
 func (b StypBox) String() string {
 	indentLevel := 1
 	tab := strings.Repeat("    ", indentLevel)
-	strMsg := fmt.Sprintf("%s<< StypBox >>", tab)
+	strMsg := fmt.Sprintf("\n%s<< StypBox >>", tab)
 	strMsg = fmt.Sprintf("%s\tMajorBrand(%s) MinorVersion(%d) CompatibleBrands(%v)", strMsg, b.majorBrand, b.minorVersion, b.compatibleBrands)
 	return strMsg
 }

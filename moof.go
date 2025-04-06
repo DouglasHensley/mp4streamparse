@@ -22,7 +22,7 @@ func (b MoofBox) String() string {
 	indentLevel := 1
 	tab := strings.Repeat("    ", indentLevel)
 	tab1 := strings.Repeat("    ", indentLevel+1)
-	strMsg := fmt.Sprintf("%s<< MoofBox >>", tab)
+	strMsg := fmt.Sprintf("\n%s<< MoofBox >>", tab)
 	strMsg = fmt.Sprintf("%s\tPrevSeqNo(%d) ElapsedTime(%f)", strMsg, b.prevSeqNo, b.elapsedTime)
 	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.mfhd)
 	strMsg = fmt.Sprintf("%s\n%s%s", strMsg, tab1, b.traf)
